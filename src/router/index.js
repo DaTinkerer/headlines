@@ -3,11 +3,12 @@ import BreakingView from "../views/BreakingView.vue";
 import BusinessView from "../views/BusinessView.vue";
 import EntertainmentView from "../views/EntertainmentView.vue";
 import HealthView from "../views/HealthView.vue";
-import NationView from "../views/NationView.vue";
+import USView from "../views/USView.vue";
 import ScienceView from "../views/ScienceView.vue";
 import SportsView from "../views/SportsView.vue";
 import WorldView from "../views/WorldView.Vue";
 import TechView from "../views/TechView.vue";
+import ResultsView from "../views/ResultsView.vue";
 
 const routes = [
   {
@@ -31,9 +32,9 @@ const routes = [
     component: HealthView,
   },
   {
-    path: "/nation",
-    name: "nation",
-    component: NationView,
+    path: "/US",
+    name: "us",
+    component: USView,
   },
   {
     path: "/science",
@@ -54,6 +55,11 @@ const routes = [
     path: "/world",
     name: "world",
     component: WorldView,
+  },
+  {
+    path: "/results",
+    name: "results",
+    component: ResultsView,
   },
 ];
 
