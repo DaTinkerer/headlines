@@ -15,14 +15,17 @@ export default {
   name: "HeadBar",
   data() {
     return {
-      articles: [],
       input: "",
     };
   },
   props: {},
 
+  mounted() {
+    this.input = JSON.parse(localStorage.getItem("input"));
+    this.sendInput();
+  },
   methods: {
-    sendInput() {
+    async sendInput() {
       this.$store
         .dispatch("searchNews", {
           input: this.input,
@@ -33,6 +36,11 @@ export default {
         .catch((err) => {
           console.long(err);
         });
+    },
+  },
+  watch: {
+    input() {
+      localStorage.setItem("input", JSON.stringify(this.input));
     },
   },
   computed: {},

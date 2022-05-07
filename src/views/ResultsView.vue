@@ -1,7 +1,7 @@
 <template>
   <div class="results">
-    <section  v-for="article in getNewArticles" :key="article.id">
-      <p>{{article.title}}</p>
+    <section v-for="article in getNewArticles" :key="article.id">
+      <p>{{ article.title }}</p>
       <p>{{ article.source.name }}</p>
       <p>{{ article.description }}</p>
       <a :href="article.url"><p>Full Article</p></a>
@@ -14,19 +14,16 @@
 // import store from '../store'
 export default {
   data() {
-    return {
-   
-    };
+    return {};
   },
 
-  methods: {
-      
+  async created() {
+    this.getNewArticles()
   },
   computed: {
-      getNewArticles() {
-          
-          return this.$store.getters.getArticles
-      }
+    getNewArticles() {
+      return this.$store.getters.getArticles;
+    },
   },
 };
 </script>
