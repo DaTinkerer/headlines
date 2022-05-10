@@ -1,6 +1,6 @@
 <template>
-<div class="app">
-<HeadBar />
+<div>
+<TopBar />
 <SideNav />
   <router-view/>
 </div>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import HeadBar from "@/components/HeadBar.vue";
+import TopBar from "@/components/TopBar.vue";
 import SideNav from "@/components/SideNav.vue";
 
 export default {
   name: "App",
   components: {
-    HeadBar,
+    TopBar,
     SideNav
   },
 };
@@ -22,5 +22,11 @@ export default {
 
 
 <style lang="scss">
+
+  #img {
+    object-fit: cover;
+    height: 100px;
+    width: 90px;
+  }
 
 </style>

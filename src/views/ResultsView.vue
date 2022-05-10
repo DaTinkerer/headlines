@@ -1,25 +1,40 @@
 <template>
-  <div class="results">
-    <section v-for="article in getNewArticles" :key="article.id">
-      <p>{{ article.title }}</p>
-      <p>{{ article.source.name }}</p>
-      <p>{{ article.description }}</p>
-      <a :href="article.url"><p>Full Article</p></a>
-      <img :src="article.image" width="150" height="150" />
-    </section>
+  <div class="results lg:-mt-80">
+    <div 
+      class="flex justify-between w-full lg:w-1/3 flex container border-solid border-darkerGray border rounded-lg px-4 py-4 mb-5 mx-auto  justify-between font-fira text-slate-50"
+      v-for="article in getNewArticles"
+      :key="article.id"
+    >
+      <div class="flex-column mr-4">
+        <p class="mb-1 font-bold">{{ article.title }}</p>
+        <p class="mb-1 font-light">{{ article.source.name }}</p>
+        <a
+          class="text-lightRed table font-medium text-sm block mb-1"
+          :href="article.url"
+          target="_blank"
+          ><p>Full Article</p></a
+        >
+      </div>
+      <img
+        class="rounded-lg"
+        :src="article.image"
+        id="img"
+        
+      />
+    </div>
   </div>
 </template>
 
 <script>
-// import store from '../store'
 export default {
   data() {
     return {};
   },
 
   async created() {
-    this.getNewArticles()
+    this.getNewArticles;
   },
+  methods: {},
   computed: {
     getNewArticles() {
       return this.$store.getters.getArticles;
@@ -27,3 +42,8 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  
+</style>
+

@@ -2,13 +2,14 @@ import { createStore } from "vuex";
 import axios from "axios";
 export default createStore({
   state: {
-    articles: [],
+    articles: JSON.parse(localStorage.getItem("articles")),
   },
   getters: {
     getArticles: (state) => state.articles,
   },
   mutations: {
     getArticles(state, articles) {
+      localStorage.setItem("articles", JSON.stringify(articles));
       state.articles = articles;
     },
   },
