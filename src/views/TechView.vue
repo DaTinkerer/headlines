@@ -28,7 +28,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "BreakingView",
+  name: "TechView",
 
   data() {
     return {

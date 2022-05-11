@@ -91,7 +91,7 @@
     </div>
     <svg
       @click="toggleMenu()"
-      class="flex ml-1 -mt-[70px] mb-5 cursor-pointer lg:hidden"
+      class="flex ml-1 -mt-[72px] mb-5 cursor-pointer lg:hidden"
       width="24"
       height="16"
       viewBox="0 0 35 27"

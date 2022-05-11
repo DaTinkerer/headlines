@@ -11,6 +11,21 @@ CORS(app)
 api_key = config('key')
 
 
+@app.route("/search", methods=['POST'])
+def search():
+    data = request.get_json()
+    search_input = data['input']
+    r = requests.get(
+        f'https://gnews.io/api/v4/search?q="{search_input}"&token={api_key}&lang=en')
+    res = r.json()
+    if r.status_code == 400:
+        return "Oops, there was a syntax error with the search query.", 400
+    if res['articles'] == []:
+        return "No articles were found for the search query.", 404
+
+    return jsonify(res)
+
+
 @app.route("/breaking")
 def breaking():
     r = requests.get(
@@ -81,13 +96,3 @@ def tech():
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology')
     res = r.json()
     return jsonify(res)
-
-@app.route("/search", methods=['POST'])
-def search():
-    data = request.get_json()
-    search_input = data['input']
-    r = requests.get(
-        f'https://gnews.io/api/v4/search?q="{search_input}"&token={api_key}&lang=en')
-    res = r.json()
-    return jsonify(res)
-

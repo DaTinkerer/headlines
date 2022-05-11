@@ -3,15 +3,19 @@ import axios from "axios";
 export default createStore({
   state: {
     articles: JSON.parse(localStorage.getItem("articles")),
+    msg: '',
   },
   getters: {
     getArticles: (state) => state.articles,
   },
   mutations: {
-    getArticles(state, articles) {
+    setArticles(state, articles) {
       localStorage.setItem("articles", JSON.stringify(articles));
       state.articles = articles;
     },
+    setErrorMsg(state, msg) {
+      state.msg = msg
+    }
   },
   actions: {
     searchNews({ commit }, data) {
@@ -23,10 +27,12 @@ export default createStore({
             }
           )
           .then((res) => {
-            commit("getArticles", res.data.articles);
+            commit("setArticles", res.data.articles);
             resolve();
           })
           .catch((err) => {
+            commit("setErrorMsg", err.response.data)
+            
             reject(err);
           });
       });

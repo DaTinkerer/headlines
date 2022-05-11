@@ -65,8 +65,9 @@ export default {
           this.toggleInput()
           this.$router.push({ name: "results" });
         })
-        .catch((err) => {
-          console.long(err);
+        .catch(() => {
+          this.$router.push({ name: "error" });
+          
         });
     },
     toggleInput() {

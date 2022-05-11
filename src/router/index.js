@@ -9,6 +9,7 @@ import SportsView from "../views/SportsView.vue";
 import WorldView from "../views/WorldView.vue";
 import TechView from "../views/TechView.vue";
 import ResultsView from "../views/ResultsView.vue";
+import ErrorView from "../views/ErrorView.vue";
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     path: "/results",
     name: "results",
     component: ResultsView,
+  },
+  {
+    path: "/error",
+    name: "error",
+    component: ErrorView,
   },
 ];
 
