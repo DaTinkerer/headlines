@@ -1,11 +1,93 @@
 from flask import Flask
+from flask import jsonify
+from flask import request
 from flask_cors import CORS
 from decouple import config
+import requests
 
 app = Flask(__name__)
 app.secret_key = config('SECRET_KEY')
 CORS(app)
+api_key = config('key')
 
-@app.route("/")
-def test():
-    return "<h1>hello</h1>"
+
+@app.route("/breaking")
+def breaking():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/business")
+def business():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=business')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/entertainment")
+def entertainment():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=entertainment')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/health")
+def health():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=e&topic=health')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/us")
+def us():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country=us')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/science")
+def science():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=science')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/sports")
+def sports():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=sports')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/world")
+def world():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=world')
+    res = r.json()
+    return jsonify(res)
+
+
+@app.route("/tech")
+def tech():
+    r = requests.get(
+        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology')
+    res = r.json()
+    return jsonify(res)
+
+@app.route("/search", methods=['POST'])
+def search():
+    data = request.get_json()
+    search_input = data['input']
+    r = requests.get(
+        f'https://gnews.io/api/v4/search?q="{search_input}"&token={api_key}&lang=en')
+    res = r.json()
+    return jsonify(res)
+

@@ -1,5 +1,5 @@
 <template>
-   <div class="sports lg:-mt-80">
+   <div class="world lg:-mt-80">
     <div
       class="flex justify-between w-full lg:w-1/3 flex container border-solid border-darkerGray border rounded-lg px-4 py-4 mb-5 mx-auto  justify-between font-fira text-slate-50"
       v-for="article in articles"
@@ -44,7 +44,7 @@ export default {
     async getNews() {
       axios
         .get(
-          "http://localhost:5000/sports"
+          "http://localhost:5000/world"
         )
         .then((res) => {
           this.articles = res.data.articles

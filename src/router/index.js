@@ -6,7 +6,7 @@ import HealthView from "../views/HealthView.vue";
 import USView from "../views/USView.vue";
 import ScienceView from "../views/ScienceView.vue";
 import SportsView from "../views/SportsView.vue";
-import WorldView from "../views/WorldView.Vue";
+import WorldView from "../views/WorldView.vue";
 import TechView from "../views/TechView.vue";
 import ResultsView from "../views/ResultsView.vue";
 

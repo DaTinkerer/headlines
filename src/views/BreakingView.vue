@@ -44,7 +44,7 @@ export default {
     async getNews() {
       axios
         .get(
-          "https://gnews.io/api/v4/top-headlines?token=key&lang=en"
+          "http://localhost:5000/breaking"
         )
         .then((res) => {
           this.articles = res.data.articles
