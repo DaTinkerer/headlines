@@ -16,6 +16,7 @@
           v-model="input"
           type="text"
           placeholder="Search for Stories"
+          autocomplete="off"
           id="input"
         />
         <!-- mobile input -->
@@ -24,6 +25,7 @@
           v-model="input"
           type="text"
           placeholder="Search for Stories"
+          autocomplete="off"
           id="mobile-input"
         />
         <input class="hidden" type="submit" name="submit" id="submit" />
@@ -63,10 +65,10 @@ export default {
         })
         .then(() => {
           this.toggleInput()
-          this.$router.push({ name: "results" });
+          this.$router.push({ name: "Results" });
         })
         .catch(() => {
-          this.$router.push({ name: "error" });
+          this.$router.push({ name: "Error" });
           
         });
     },

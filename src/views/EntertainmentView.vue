@@ -51,7 +51,11 @@ export default {
 
         })
         .catch((err) => {
-          console.log(err);
+          this.$store
+            .dispatch("getError", { error: err.response.data })
+            .then(() => {
+              this.$router.push({ name: "Error" });
+            });
         });
     },
   },

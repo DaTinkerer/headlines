@@ -2,6 +2,7 @@
 <div class="error">
     <div class="mt-16 lg:-mt-80 container mx-auto flex font-fira justify-center">
         <h2 class="text-slate-50">{{ msg }}</h2>
+        <h2 v-if="$data.msg == ''" class="text-slate-50">There are currently no Error messages</h2>
     </div>
     
 </div>

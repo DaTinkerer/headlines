@@ -14,57 +14,57 @@ import ErrorView from "../views/ErrorView.vue";
 const routes = [
   {
     path: "/",
-    name: "breaking",
+    name: "Breaking",
     component: BreakingView,
   },
   {
     path: "/business",
-    name: "business",
+    name: "Business",
     component: BusinessView,
   },
   {
     path: "/entertainment",
-    name: "entertainment",
+    name: "Entertainment",
     component: EntertainmentView,
   },
   {
     path: "/health",
-    name: "health",
+    name: "Health",
     component: HealthView,
   },
   {
     path: "/US",
-    name: "us",
+    name: "US",
     component: USView,
   },
   {
     path: "/science",
-    name: "science",
+    name: "Science",
     component: ScienceView,
   },
   {
     path: "/sports",
-    name: "sports",
+    name: "Sports",
     component: SportsView,
   },
   {
     path: "/tech",
-    name: "tech",
+    name: "Technology",
     component: TechView,
   },
   {
     path: "/world",
-    name: "world",
+    name: "World",
     component: WorldView,
   },
   {
     path: "/results",
-    name: "results",
+    name: "Results",
     component: ResultsView,
   },
   {
     path: "/error",
-    name: "error",
+    name: "Error",
     component: ErrorView,
   },
 ];
@@ -72,6 +72,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+router.beforeEach((to, from, next) => {
+  document.title = `${process.env.VUE_APP_TITLE} | ${to.name}`;
+  next();
 });
 
 export default router;

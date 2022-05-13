@@ -1,7 +1,7 @@
 <template>
-   <div class="world lg:-mt-80">
+  <div class="world lg:-mt-80">
     <div
-      class="flex justify-between w-full lg:w-1/3 flex container border-solid border-darkerGray border rounded-lg px-4 py-4 mb-5 mx-auto  justify-between font-fira text-slate-50"
+      class="flex justify-between w-full lg:w-1/3 flex container border-solid border-darkerGray border rounded-lg px-4 py-4 mb-5 mx-auto justify-between font-fira text-slate-50"
       v-for="article in articles"
       :key="article.id"
     >
@@ -15,12 +15,7 @@
           ><p>Full Article</p></a
         >
       </div>
-      <img
-        class="rounded-lg"
-        :src="article.image"
-        id="img"
-        
-      />
+      <img class="rounded-lg" :src="article.image" id="img" />
     </div>
   </div>
 </template>
@@ -33,25 +28,25 @@ export default {
   data() {
     return {
       articles: [],
-      
     };
   },
 
-  async created () {
-    this.getNews()
+  async created() {
+    this.getNews();
   },
   methods: {
     async getNews() {
       axios
-        .get(
-          "http://localhost:5000/world"
-        )
+        .get("http://localhost:5000/world")
         .then((res) => {
-          this.articles = res.data.articles
-
+          this.articles = res.data.articles;
         })
         .catch((err) => {
-          console.log(err);
+          this.$store
+            .dispatch("getError", { error: err.response.data })
+            .then(() => {
+              this.$router.push({ name: "Error" });
+            });
         });
     },
   },

@@ -20,6 +20,8 @@ def search():
     res = r.json()
     if r.status_code == 400:
         return "Oops, there was a syntax error with the search query.", 400
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     if res['articles'] == []:
         return "No articles were found for the search query.", 404
 
@@ -31,6 +33,8 @@ def breaking():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -39,6 +43,8 @@ def business():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=business')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -47,6 +53,8 @@ def entertainment():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=entertainment')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -55,6 +63,8 @@ def health():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=e&topic=health')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -63,6 +73,8 @@ def us():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country=us')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -71,6 +83,8 @@ def science():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=science')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -79,6 +93,8 @@ def sports():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=sports')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -87,6 +103,8 @@ def world():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=world')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
 
 
@@ -95,4 +113,6 @@ def tech():
     r = requests.get(
         f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology')
     res = r.json()
+    if r.status_code == 403:
+        return "Maximum daily request limit reached, the next reset is at 00:00 UTC.", 403
     return jsonify(res)
