@@ -37,7 +37,7 @@ export default {
   methods: {
     async getNews() {
       axios
-        .get("http://localhost:5000/breaking")
+        .get("https://api.headlines.icu/breaking")
         .then((res) => {
           this.articles = res.data.articles;
         })

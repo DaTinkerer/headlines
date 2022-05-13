@@ -21,7 +21,7 @@ export default createStore({
     searchNews({ commit }, data) {
       return new Promise((resolve, reject) => {
         axios
-          .post("http://localhost:5000/search", {
+          .post("https://api.headlines.icu/search", {
             input: data.input,
           })
           .then((res) => {

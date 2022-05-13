@@ -44,7 +44,7 @@ export default {
     async getNews() {
       axios
         .get(
-          "http://localhost:5000/entertainment"
+          "https://api.headlines.icu/entertainment"
         )
         .then((res) => {
           this.articles = res.data.articles

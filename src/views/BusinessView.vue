@@ -37,7 +37,7 @@ export default {
   methods: {
     async getNews() {
       axios
-        .get("http://localhost:5000/business")
+        .get("https://api.headlines.icu/business")
         .then((res) => {
           this.articles = res.data.articles;
         })
