@@ -1,107 +1,110 @@
 <template>
-  <div class="sidenav w-32">
+  <div class="sidenav">
     <!-- nav for desktop -->
-    <div class="hidden lg:flex flex-column ml-8 font-fira text-gray">
-      <nav>
-        <router-link class="table mb-4 font-light hover:text-lightRed" to="/US"
-          >U.S.</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/world"
-          >World</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/tech"
-          >Technology</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/sports"
-          >Sports</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/business"
-          >Business</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/entertainment"
-          >Entertainment</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/health"
-          >Health</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/science"
-          >Science</router-link
-        >
-      </nav>
-    </div>
+
+    <nav id="nav">
+      <div>
+        <router-link class="link" to="/US">
+          <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
+          <div>U.S.</div>
+        </router-link>
+      </div>
+      <div>
+        <div>
+          <router-link class="link" to="/world">
+            <div><font-awesome-icon class="icon" icon="globe" /></div>
+            <div>World</div>
+          </router-link>
+        </div>
+        <router-link class="link" to="/tech">
+          <div><font-awesome-icon class="icon" icon="computer" /></div>
+          <div>Technology</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/sports">
+          <div><font-awesome-icon class="icon" icon="football" /></div>
+          <div>Sports</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/business">
+          <div><font-awesome-icon class="icon" icon="building" /></div>
+          <div>Business</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/entertainment">
+          <div><font-awesome-icon class="icon" icon="film" /></div>
+          <div>Entertainment</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/health">
+          <div><font-awesome-icon class="icon" icon="heart-pulse" /></div>
+          <div>Health</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/science">
+          <div><font-awesome-icon class="icon" icon="flask" /></div>
+          <div>Science</div>
+        </router-link>
+      </div>
+    </nav>
+
     <!-- nav for mobile -->
-    <div
-      id="nav"
-      class="hidden absolute flex-column mt-8 font-fira text-gray bg-darkBlue lg:hidden"
-    >
-      <nav @click="toggleMenu()" class="mx-2">
-        <router-link class="table mb-4 font-light hover:text-lightRed" to="/US"
-          >U.S.</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/world"
-          >World</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/tech"
-          >Technology</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/sports"
-          >Sports</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/business"
-          >Business</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/entertainment"
-          >Entertainment</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/health"
-          >Health</router-link
-        >
-        <router-link
-          class="table mb-4 font-light hover:text-lightRed"
-          to="/science"
-          >Science</router-link
-        >
-      </nav>
-    </div>
-    <svg
-      @click="toggleMenu()"
-      class="flex ml-1 -mt-[72px] mb-5 cursor-pointer lg:hidden"
-      width="24"
-      height="16"
-      viewBox="0 0 35 27"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line y1="2" x2="35" y2="2" stroke="#F16A6A" stroke-width="4" />
-      <line y1="13.5" x2="35" y2="13.5" stroke="#F16A6A" stroke-width="4" />
-      <line y1="25" x2="35" y2="25" stroke="#F16A6A" stroke-width="4" />
-    </svg>
+    <nav @click="toggleMenu()" id="mobile-nav">
+      <div>
+        <router-link class="link" to="/US">
+          <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
+          <div>U.S.</div>
+        </router-link>
+      </div>
+      <div>
+        <div>
+          <router-link class="link" to="/world">
+            <div><font-awesome-icon class="icon" icon="globe" /></div>
+            <div>World</div>
+          </router-link>
+        </div>
+        <router-link class="link" to="/tech">
+          <div><font-awesome-icon class="icon" icon="computer" /></div>
+          <div>Technology</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/sports">
+          <div><font-awesome-icon class="icon" icon="football" /></div>
+          <div>Sports</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/business">
+          <div><font-awesome-icon class="icon" icon="building" /></div>
+          <div>Business</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/entertainment">
+          <div><font-awesome-icon class="icon" icon="film" /></div>
+          <div>Entertainment</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/health">
+          <div><font-awesome-icon class="icon" icon="heart-pulse" /></div>
+          <div>Health</div>
+        </router-link>
+      </div>
+      <div>
+        <router-link class="link" to="/science">
+          <div><font-awesome-icon class="icon" icon="flask" /></div>
+          <div>Science</div>
+        </router-link>
+      </div>
+    </nav>
+    <font-awesome-icon @click="toggleMenu()" id="burger-menu" icon="bars" />
   </div>
 </template>
 
@@ -114,9 +117,98 @@ export default {
   created() {},
   methods: {
     toggleMenu() {
-      document.querySelector("#nav").classList.toggle("flex");
-      document.querySelector("#nav").classList.toggle("hidden");
+      document.querySelector("#mobile-nav").classList.toggle("active");
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.sidenav {
+  max-width: 200px;
+
+  #nav {
+    display: none;
+    @media screen and (min-width: 1185px) {
+      margin-top: 3rem;
+      display: block;
+      position: fixed;
+      margin-top: 1rem;
+
+      .link {
+        display: flex;
+        align-items: center;
+        color: $gray;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+        .icon {
+          margin-right: 1rem;
+        }
+        &:hover {
+          color: $light-red;
+          transition: 0.15s;
+        }
+      }
+    }
+  }
+  #mobile-nav {
+    display: none;
+    @media screen and (max-width: 1185px) {
+      background-color: $dark-blue;
+      display: block;
+      margin-top: 5.6rem;
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      left: -300px;
+      box-shadow: 2px 0px 5px 0px #1c1e27;
+      transition: 0.2s;
+      z-index: 1;
+      .link {
+        display: flex;
+        align-items: center;
+        color: $gray;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        .icon {
+          margin-right: 1rem;
+        }
+        &:hover {
+          color: $light-red;
+          transition: 0.15s;
+        }
+      }
+    }
+  }
+  #mobile-nav.active {
+    left: 0;
+  }
+  #burger-menu {
+    color: $light-red;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-left: 0.8rem;
+    margin-bottom: 2em;
+    margin-top: 3.8rem;
+    margin-right: 1rem;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    &:hover {
+      color: $dark-red;
+      transition: 0.1s;
+    }
+    @media screen and (min-width: 1185px) {
+      display: none;
+    }
+  }
+}
+</style>

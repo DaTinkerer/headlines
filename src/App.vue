@@ -1,10 +1,9 @@
 <template>
-<div>
-<TopBar />
-<SideNav />
-  <router-view/>
-</div>
-  
+  <div class="app">
+    <TopBar />
+    <SideNav />
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -15,18 +14,18 @@ export default {
   name: "App",
   components: {
     TopBar,
-    SideNav
+    SideNav,
   },
 };
 </script>
 
-
 <style lang="scss">
-
-  #img {
-    object-fit: cover;
-    height: 100px;
-    width: 90px;
-  }
+body {
+  background-color: #282a36;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: $font;
+}
 
 </style>
