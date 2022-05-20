@@ -1,8 +1,8 @@
 <template>
 <div class="error">
     <div>
-        <h2>{{ msg }}</h2>
-        <h2 v-if="$data.msg == ''">There are currently no Error messages</h2>
+        <p class="err">{{ msg }}</p>
+        <p class="err" v-if="$data.msg == ''">There are no errors</p>
     </div>
     
 </div>
@@ -20,3 +20,14 @@ export default {
     
 }
 </script>
+
+<style lang="scss" scoped>
+    .err {
+        margin-top: 10rem;
+        color: #fff;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+
+    }
+</style>

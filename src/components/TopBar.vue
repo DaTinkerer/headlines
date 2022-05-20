@@ -14,7 +14,7 @@
         />
         <!-- mobile input -->
 
-        <div v-if="isShown" class="mobile-input-cont">
+        <div v-if="isShown" class="fadein mobile-input-cont">
           <font-awesome-icon
             @click="toggleInput()"
             id="exit-icon"
@@ -51,9 +51,9 @@ export default {
   },
   props: {},
 
-  mounted() {
-    this.input = JSON.parse(localStorage.getItem("input"));
-  },
+  // mounted() {
+  //   this.input = JSON.parse(localStorage.getItem("input"));
+  // },
   methods: {
     async sendInput() {
       this.$store
@@ -115,12 +115,11 @@ export default {
   }
 
   #logo-link {
+    -webkit-tap-highlight-color: transparent;
     color: $light-red;
-    display: inline-block;
     text-decoration: none;
     font-size: 0.7em;
     margin-top: -0.25rem;
-    margin-bottom: 0rem;
     @media screen and (min-width: 1185px) {
       font-size: 0.8em;
     }
@@ -154,13 +153,14 @@ export default {
       border: none;
       color: #fff;
       font-size: 0.9rem;
-      padding: 0.9rem 0.9rem 0.9rem 4rem;
+      padding: 0.9rem 0.9rem 0.9rem 3rem;
       position: fixed;
       right: 0;
       margin-top: 0.4rem;
       margin-right: 0.6rem;
       min-width: 100px;
       z-index: 3;
+
       &:focus {
         outline: none;
         background-color: $lighter-blue;
@@ -169,12 +169,13 @@ export default {
     }
   }
   #exit-icon {
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     font-size: 1.5rem;
     color: $gray;
     z-index: 4;
     position: fixed;
-    top: 25px;
+    top: 27px;
     right: 240px;
 
     &:hover {
@@ -185,10 +186,11 @@ export default {
     }
   }
   #search-icon {
+    -webkit-tap-highlight-color: transparent;
     color: $gray;
     cursor: pointer;
     font-size: 1.3rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     &:hover {
       color: $dark-gray;
       transition: 0.1s;

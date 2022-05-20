@@ -1,8 +1,12 @@
 import { createStore } from "vuex";
 import axios from "axios";
+const dayjs = require("dayjs");
+dayjs().format();
+const relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
 export default createStore({
   state: {
-    articles: JSON.parse(localStorage.getItem("articles")),
+    articles: "",
     msg: "",
   },
   getters: {
@@ -10,7 +14,6 @@ export default createStore({
   },
   mutations: {
     setArticles(state, articles) {
-      localStorage.setItem("articles", JSON.stringify(articles));
       state.articles = articles;
     },
     setErrorMsg(state, msg) {
@@ -25,7 +28,15 @@ export default createStore({
             input: data.input,
           })
           .then((res) => {
-            commit("setArticles", res.data.articles);
+            const articles = res.data.articles.map((x) => ({
+              title: x.title,
+              source: x.source,
+              url: x.url,
+              publishedAt: dayjs(x.publishedAt).fromNow(),
+              image: x.image,
+            }));
+            console.log(articles);
+            commit("setArticles", articles);
             resolve();
           })
           .catch((err) => {

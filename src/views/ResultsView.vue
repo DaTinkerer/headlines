@@ -5,7 +5,7 @@
         <div>
           <p class="article-content" id="article-title">{{ article.title }}</p>
           <p class="article-content" id="article-source">
-            {{ article.source.name }}
+            {{ article.source.name }} . {{ article.publishedAt }}
           </p>
           <a
             class="article-content"
@@ -31,6 +31,9 @@ export default {
   },
 
   async created() {
+    this.$store.dispatch("searchNews", {
+      input: JSON.parse(localStorage.getItem("input"))
+    });
     this.getNewArticles;
   },
   methods: {},

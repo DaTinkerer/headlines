@@ -202,6 +202,7 @@ export default {
     position: fixed;
     top: 0;
     z-index: 3;
+    -webkit-tap-highlight-color: transparent;
     &:hover {
       color: $dark-red;
       transition: 0.1s;
