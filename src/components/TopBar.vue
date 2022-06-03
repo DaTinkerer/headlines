@@ -14,20 +14,18 @@
         />
         <!-- mobile input -->
 
-        <div v-if="isShown" class="fadein mobile-input-cont">
-          <font-awesome-icon
-            @click="toggleInput()"
-            id="exit-icon"
-            icon="xmark"
-          />
-          <input
-            v-model="input"
-            type="text"
-            placeholder="Search for Stories"
-            autocomplete="off"
-            id="mobile-input"
-          />
-        </div>
+          <div v-if="isShown" class="mobile-input-cont">
+            <button @click="toggleInput()" id="exit-button">
+              <font-awesome-icon id="exit-icon" icon="xmark" />
+            </button>
+            <input
+              v-model="input"
+              type="text"
+              placeholder="Search for Stories"
+              autocomplete="off"
+              id="mobile-input"
+            />
+          </div>
         <input type="submit" name="submit" id="submit" />
       </form>
       <font-awesome-icon
@@ -115,7 +113,6 @@ export default {
   }
 
   #logo-link {
-    -webkit-tap-highlight-color: transparent;
     color: $light-red;
     text-decoration: none;
     font-size: 0.7em;
@@ -133,60 +130,77 @@ export default {
       border: none;
       color: #fff;
       font-size: 0.9rem;
-      padding: 0.9rem 0.9rem 0.9rem 0.9rem;
+      padding: 0.9rem;
       margin-top: 0.4rem;
       min-width: 300px;
       &:focus {
         outline: none;
-        background-color: $lighter-blue;
+        background-color: $darker-blue;
         transition: 0.2s;
       }
     }
   }
-
+  .mobile-input-cont {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    position: fixed;
+    right: 0;
+    margin-right: 0.8rem;
+  }
   #mobile-input {
     display: none;
     @media screen and (max-width: 529px) {
       display: block;
       background-color: $light-blue;
       border-radius: 0.8rem;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
       border: none;
       color: #fff;
-      font-size: 0.9rem;
-      padding: 0.9rem 0.9rem 0.9rem 3rem;
-      position: fixed;
+      font-size: 0.8rem;
+      position: relative;
       right: 0;
-      margin-top: 0.4rem;
-      margin-right: 0.6rem;
       min-width: 100px;
-      z-index: 3;
+      margin-top: 0.4rem;
+      padding: 0.1rem;
+      padding-left: 0.9rem;
+      height: 50px;
+      z-index: 4;
 
       &:focus {
         outline: none;
-        background-color: $lighter-blue;
+        background-color: $darker-blue;
         transition: 0.2s;
       }
     }
   }
-  #exit-icon {
-    -webkit-tap-highlight-color: transparent;
+  #exit-button {
     cursor: pointer;
-    font-size: 1.5rem;
-    color: $gray;
-    z-index: 4;
-    position: fixed;
-    top: 27px;
-    right: 240px;
+    background-color: $light-blue;
+    border: solid 3px #3c3f51;
+    height: 0.1rem;
+    padding: 1.377rem;
+    z-index: 5;
+    position: relative;
+    margin-top: 0.4rem;
 
     &:hover {
-      color: $dark-gray;
+      background-color: $darker-blue;
+      border: solid 3px #333543;
+      transition: 0.2s;
     }
     @media screen and (min-width: 530px) {
       display: none;
     }
   }
+  #exit-icon {
+    display: block;
+    font-size: 1.5rem;
+    color: $gray;
+    margin-top: -0.6rem;
+  }
   #search-icon {
-    -webkit-tap-highlight-color: transparent;
     color: $gray;
     cursor: pointer;
     font-size: 1.3rem;
@@ -203,5 +217,13 @@ export default {
   #submit {
     display: none;
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.08s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

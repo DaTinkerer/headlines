@@ -6,23 +6,24 @@ from decouple import config
 import requests
 
 app = Flask(__name__)
-app.secret_key = config('SECRET_KEY')
+app.secret_key = config("SECRET_KEY")
 CORS(app)
-api_key = config('key')
+api_key = config("key")
 
 
-@app.route("/search", methods=['POST'])
+@app.route("/search", methods=["POST"])
 def search():
     data = request.get_json()
-    search_input = data['input']
+    search_input = data["input"]
     r = requests.get(
-        f'https://gnews.io/api/v4/search?q="{search_input}"&token={api_key}&lang=en')
+        f'https://gnews.io/api/v4/search?q="{search_input}"&token={api_key}&lang=en'
+    )
     res = r.json()
     if r.status_code == 400:
         return "Oops, there was a syntax error with the search query.", 400
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
-    if res['articles'] == []:
+    if res["articles"] == []:
         return "No articles were found for the search query.", 404
 
     return jsonify(res)
@@ -30,8 +31,7 @@ def search():
 
 @app.route("/breaking")
 def breaking():
-    r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en')
+    r = requests.get(f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en")
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -41,7 +41,8 @@ def breaking():
 @app.route("/business")
 def business():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=business')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=business"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -51,7 +52,8 @@ def business():
 @app.route("/entertainment")
 def entertainment():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=entertainment')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=entertainment"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -61,7 +63,8 @@ def entertainment():
 @app.route("/health")
 def health():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=e&topic=health')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=e&topic=health"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -71,7 +74,8 @@ def health():
 @app.route("/us")
 def us():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country=us')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country=us"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -81,7 +85,8 @@ def us():
 @app.route("/science")
 def science():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=science')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=science"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -91,7 +96,8 @@ def science():
 @app.route("/sports")
 def sports():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=sports')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=sports"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -101,7 +107,8 @@ def sports():
 @app.route("/world")
 def world():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=world')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=world"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -111,7 +118,8 @@ def world():
 @app.route("/tech")
 def tech():
     r = requests.get(
-        f'https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology')
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
