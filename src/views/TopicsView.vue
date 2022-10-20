@@ -4,7 +4,9 @@
       <div class="article" v-for="article in articles" :key="article.id">
         <div>
           <p id="article-title">{{ article.title }}</p>
-          <p id="article-source">{{ article.source.name }} . {{ article.publishedAt }}</p>
+          <p id="article-source">
+            {{ article.source.name }} . {{ article.publishedAt }}
+          </p>
           <a id="article-link" :href="article.url" target="_blank"
             ><p>Full Article</p></a
           >
@@ -24,11 +26,13 @@ dayjs().format();
 const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
 export default {
-  name: "SportsView",
+  name: "BreakingView",
 
   data() {
     return {
       articles: [],
+
+      topic: this.$route.params.topic,
     };
   },
 
@@ -38,7 +42,9 @@ export default {
   methods: {
     async getNews() {
       axios
-        .get("https://api.headlines.icu/sports")
+        .post("http://localhost:5000/articles", {
+          topic: this.topic,
+        })
         .then((res) => {
           this.articles = res.data.articles.map((x) => ({
             title: x.title,

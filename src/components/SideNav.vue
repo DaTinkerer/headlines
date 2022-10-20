@@ -1,52 +1,77 @@
-  <template>
+<template>
   <div class="sidenav">
     <!-- nav for desktop -->
 
     <nav id="nav">
       <div>
-        <router-link class="link" to="/US">
+        <router-link
+          class="link"
+          :key="$route.topics"
+          :to="{ name: 'Topics', params: { topic: 'us' } }"
+        >
           <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
-          <div>U.S.</div>
+          <div>US</div>
         </router-link>
       </div>
       <div>
         <div>
-          <router-link class="link" to="/world">
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'world' } }"
+          >
             <div><font-awesome-icon class="icon" icon="globe" /></div>
             <div>World</div>
           </router-link>
         </div>
-        <router-link class="link" to="/tech">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'technology' } }"
+        >
           <div><font-awesome-icon class="icon" icon="computer" /></div>
           <div>Technology</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/sports">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'sports' } }"
+        >
           <div><font-awesome-icon class="icon" icon="football" /></div>
           <div>Sports</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/business">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'business' } }"
+        >
           <div><font-awesome-icon class="icon" icon="building" /></div>
           <div>Business</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/entertainment">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'entertainment' } }"
+        >
           <div><font-awesome-icon class="icon" icon="film" /></div>
           <div>Entertainment</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/health">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'health' } }"
+        >
           <div><font-awesome-icon class="icon" icon="heart-pulse" /></div>
           <div>Health</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/science">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'science' } }"
+        >
           <div><font-awesome-icon class="icon" icon="flask" /></div>
           <div>Science</div>
         </router-link>
@@ -56,49 +81,73 @@
     <!-- nav for mobile -->
     <nav @click="toggleMenu()" id="mobile-nav">
       <div>
-        <router-link class="link" to="/US">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'us' } }"
+        >
           <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
-          <div>U.S.</div>
+          <div>US</div>
         </router-link>
       </div>
       <div>
         <div>
-          <router-link class="link" to="/world">
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'world' } }"
+          >
             <div><font-awesome-icon class="icon" icon="globe" /></div>
             <div>World</div>
           </router-link>
         </div>
-        <router-link class="link" to="/tech">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'technology' } }"
+        >
           <div><font-awesome-icon class="icon" icon="computer" /></div>
           <div>Technology</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/sports">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'sports' } }"
+        >
           <div><font-awesome-icon class="icon" icon="football" /></div>
           <div>Sports</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/business">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'business' } }"
+        >
           <div><font-awesome-icon class="icon" icon="building" /></div>
           <div>Business</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/entertainment">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'entertainment' } }"
+        >
           <div><font-awesome-icon class="icon" icon="film" /></div>
           <div>Entertainment</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/health">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'health' } }"
+        >
           <div><font-awesome-icon class="icon" icon="heart-pulse" /></div>
           <div>Health</div>
         </router-link>
       </div>
       <div>
-        <router-link class="link" to="/science">
+        <router-link
+          class="link"
+          :to="{ name: 'Topics', params: { topic: 'science' } }"
+        >
           <div><font-awesome-icon class="icon" icon="flask" /></div>
           <div>Science</div>
         </router-link>

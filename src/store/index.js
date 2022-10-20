@@ -24,7 +24,7 @@ export default createStore({
     searchNews({ commit }, data) {
       return new Promise((resolve, reject) => {
         axios
-          .post("https://api.headlines.icu/search", {
+          .post("http://localhost:5000/search", {
             input: data.input,
           })
           .then((res) => {
@@ -35,13 +35,12 @@ export default createStore({
               publishedAt: dayjs(x.publishedAt).fromNow(),
               image: x.image,
             }));
-            console.log(articles);
             commit("setArticles", articles);
             resolve();
           })
           .catch((err) => {
             commit("setErrorMsg", err.response.data);
-
+            console.log(err);
             reject(err);
           });
       });

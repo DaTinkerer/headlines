@@ -31,95 +31,26 @@ def search():
 
 @app.route("/breaking")
 def breaking():
-    r = requests.get(f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en")
+    r = requests.get(
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en")
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
     return jsonify(res)
 
 
-@app.route("/business")
-def business():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=business"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/entertainment")
-def entertainment():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=entertainment"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/health")
-def health():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=e&topic=health"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/us")
-def us():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country=us"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/science")
-def science():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=science"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/sports")
-def sports():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=sports"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/world")
-def world():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=world"
-    )
-    res = r.json()
-    if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
-    return jsonify(res)
-
-
-@app.route("/tech")
-def tech():
-    r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic=technology"
-    )
+@app.route("/articles", methods=["POST"])
+def get_articles():
+    data = request.get_json()
+    topic = data["topic"]
+    if topic == 'us':
+        r = requests.get(
+            f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&country={topic}"
+        )
+    else:
+        r = requests.get(
+            f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&topic={topic}"
+        )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403

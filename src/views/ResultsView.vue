@@ -36,7 +36,8 @@ export default {
     });
     this.getNewArticles;
   },
-  methods: {},
+  methods: { 
+  },
   computed: {
     getNewArticles() {
       return this.$store.getters.getArticles;

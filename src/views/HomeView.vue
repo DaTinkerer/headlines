@@ -24,7 +24,7 @@ dayjs().format();
 const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
 export default {
-  name: "TechView",
+  name: "BreakingView",
 
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
   methods: {
     async getNews() {
       axios
-        .get("https://api.headlines.icu/tech")
+        .get("https://api.headlines.icu/breaking")
         .then((res) => {
           this.articles = res.data.articles.map((x) => ({
             title: x.title,
@@ -59,3 +59,4 @@ export default {
   },
 };
 </script>
+

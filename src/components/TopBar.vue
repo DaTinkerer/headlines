@@ -14,18 +14,18 @@
         />
         <!-- mobile input -->
 
-          <div v-if="isShown" class="mobile-input-cont">
-            <button @click="toggleInput()" id="exit-button">
-              <font-awesome-icon id="exit-icon" icon="xmark" />
-            </button>
-            <input
-              v-model="input"
-              type="text"
-              placeholder="Search for Stories"
-              autocomplete="off"
-              id="mobile-input"
-            />
-          </div>
+        <div v-if="isShown" class="mobile-input-cont">
+          <button @click="toggleInput()" id="exit-button">
+            <font-awesome-icon id="exit-icon" icon="xmark" />
+          </button>
+          <input
+            v-model="input"
+            type="text"
+            placeholder="Search for Stories"
+            autocomplete="off"
+            id="mobile-input"
+          />
+        </div>
         <input type="submit" name="submit" id="submit" />
       </form>
       <font-awesome-icon
@@ -62,8 +62,9 @@ export default {
           this.toggleInput();
           this.$router.push({ name: "Results" });
         })
-        .catch(() => {
+        .catch((err) => {
           this.$router.push({ name: "Error" });
+          console.log(err);
         });
     },
     toggleInput() {
@@ -179,8 +180,10 @@ export default {
     cursor: pointer;
     background-color: $light-blue;
     border: solid 3px #3c3f51;
-    height: 0.1rem;
-    padding: 1.377rem;
+    border-top-left-radius: .8rem;
+    border-bottom-left-radius: .8rem;
+    height: 0.3rem;
+    padding: 1.47rem;
     z-index: 5;
     position: relative;
     margin-top: 0.4rem;
@@ -198,7 +201,7 @@ export default {
     display: block;
     font-size: 1.5rem;
     color: $gray;
-    margin-top: -0.6rem;
+    margin-top: -.8rem;
   }
   #search-icon {
     color: $gray;
@@ -217,13 +220,5 @@ export default {
   #submit {
     display: none;
   }
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.08s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>
