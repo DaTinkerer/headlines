@@ -22,7 +22,7 @@ def search():
     if r.status_code == 400:
         return "Oops, there was a syntax error with the search query.", 400
     if r.status_code == 403:
-        return "Maximum daily request limit reached.", 403
+        return "Maximum daily requuuest limit reached.", 403
     if res["articles"] == []:
         return "No articles were found for the search query.", 404
 

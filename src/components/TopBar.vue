@@ -49,25 +49,11 @@ export default {
   },
   props: {},
 
-  // mounted() {
-  //   this.input = JSON.parse(localStorage.getItem("input"));
-  // },
   methods: {
     async sendInput() {
-      this.$store
-        .dispatch("searchNews", {
-          input: this.input,
-        })
-        .then(() => {
-          this.toggleInput();
-          this.$router.push({ name: "Results" });
-        })
-        .catch((err) => {
-          this.$router.push({ name: "Error" });
-          console.log(err);
-        });
+      this.$router.push({ path: "/search", query: { q: this.input } })
     },
-    toggleInput() {
+    async toggleInput() {
       if (this.isShown == false) {
         this.isShown = true;
       } else {
@@ -180,8 +166,8 @@ export default {
     cursor: pointer;
     background-color: $light-blue;
     border: solid 3px #3c3f51;
-    border-top-left-radius: .8rem;
-    border-bottom-left-radius: .8rem;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
     height: 0.3rem;
     padding: 1.47rem;
     z-index: 5;
@@ -201,7 +187,7 @@ export default {
     display: block;
     font-size: 1.5rem;
     color: $gray;
-    margin-top: -.8rem;
+    margin-top: -0.8rem;
   }
   #search-icon {
     color: $gray;

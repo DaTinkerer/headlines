@@ -3,11 +3,15 @@
     <section class="articles-cont">
       <div class="article" v-for="article in articles" :key="article.id">
         <div>
-          <p id="article-title">{{ article.title }}</p>
-          <p id="article-source">
+          <p class="article-content" id="article-title">{{ article.title }}</p>
+          <p class="article-content" id="article-source">
             {{ article.source.name }} . {{ article.publishedAt }}
           </p>
-          <a id="article-link" :href="article.url" target="_blank"
+          <a
+            class="article-content"
+            id="article-link"
+            :href="article.url"
+            target="_blank"
             ><p>Full Article</p></a
           >
         </div>
@@ -26,31 +30,29 @@ dayjs().format();
 const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
 export default {
-  name: "TopicsView",
-
+  name: "ResultsView",
   data() {
     return {
+      query: "",
       articles: [],
-
-      topic: "",
     };
   },
 
   async created() {
     this.$watch(
-      () => this.$route.params,
+      () => this.$route.query,
       () => {
         this.getNews();
       }
     );
-    this.getNews();
   },
   methods: {
     async getNews() {
-      this.topic = this.$route.params.topic;
+      this.query = this.$route.query.q;
+      console.log(this.$route.query);
       axios
-        .post("http://localhost:5000/articles", {
-          topic: this.topic,
+        .post("http://localhost:5000/search", {
+          input: this.query,
         })
         .then((res) => {
           this.articles = res.data.articles.map((x) => ({
