@@ -12,8 +12,9 @@
           autocomplete="off"
           id="input"
         />
-        <!-- mobile input -->
-
+      </form>
+      <!-- mobile input -->
+      <form @submit.prevent="sendInput()">
         <div v-if="isShown" class="mobile-input-cont">
           <button @click="toggleInput()" id="exit-button">
             <font-awesome-icon id="exit-icon" icon="xmark" />
@@ -51,7 +52,7 @@ export default {
 
   methods: {
     async sendInput() {
-      this.$router.push({ path: "/search", query: { q: this.input } })
+      this.$router.push({ path: "/search", query: { q: this.input } });
     },
     async toggleInput() {
       if (this.isShown == false) {

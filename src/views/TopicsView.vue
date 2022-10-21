@@ -36,17 +36,26 @@ export default {
     };
   },
 
+  // async beforeRouteUpdate(to) {
+  //   if (to.params.topic == null) {
+  //     return false;
+  //   } else {
+  //     this.getNews();
+  //   }
+  // },
   async created() {
     this.$watch(
       () => this.$route.params,
       () => {
         this.getNews();
-      }
+      },
+      { immediate: true }
     );
     this.getNews();
   },
   methods: {
     async getNews() {
+      console.log(this.$route.params);
       this.topic = this.$route.params.topic;
       axios
         .post("http://localhost:5000/articles", {

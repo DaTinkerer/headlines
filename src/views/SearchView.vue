@@ -40,16 +40,16 @@ export default {
 
   async created() {
     this.$watch(
-      () => this.$route.query,
+      () => this.$route.params,
       () => {
         this.getNews();
-      }
+      },
+      { immediate: true }
     );
   },
   methods: {
     async getNews() {
       this.query = this.$route.query.q;
-      console.log(this.$route.query);
       axios
         .post("http://localhost:5000/search", {
           input: this.query,
