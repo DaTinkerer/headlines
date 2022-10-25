@@ -5,7 +5,7 @@
         <div>
           <p id="article-title">{{ article.title }}</p>
           <p id="article-source">
-            {{ article.source.name }} . {{ article.publishedAt }}
+            {{ article.source }} . {{ article.publishedAt }}
           </p>
           <a id="article-link" :href="article.url" target="_blank"
             ><p>Full Article</p></a
@@ -55,27 +55,27 @@ export default {
   },
   methods: {
     async getNews() {
-      console.log(this.$route.params);
       this.topic = this.$route.params.topic;
       axios
         .post("http://localhost:5000/articles", {
           topic: this.topic,
         })
         .then((res) => {
-          this.articles = res.data.articles.map((x) => ({
+          this.articles = res.data.map((x) => ({
             title: x.title,
             source: x.source,
             url: x.url,
-            publishedAt: dayjs(x.publishedAt).fromNow(),
-            image: x.image,
+            publishedAt: dayjs(x.published_at).fromNow(),
+            image: x.image_url,
           }));
         })
         .catch((err) => {
-          this.$store
-            .dispatch("getError", { error: err.response.data })
-            .then(() => {
-              this.$router.push({ name: "Error" });
-            });
+          // this.$store
+          //   .dispatch("getError", { error: err.response.data })
+          //   .then(() => {
+          //     this.$router.push({ name: "Error" });
+          //   });
+          console.log(err)
         });
     },
   },
