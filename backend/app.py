@@ -43,15 +43,10 @@ def breaking():
 def get_articles():
     data = request.get_json()
     topic = data["topic"]
-    if topic == 'us':
-        r = requests.get(
-            f"https://api.thenewsapi.com/v1/news/top?api_token={api_key}&locale=us&limit=12&language=en")
-        
-    else:
-        r = requests.get(
-            f"https://api.thenewsapi.com/v1/news/top?api_token={api_key}&language=en&limit=12&categories={topic}"
-        )
+    r = requests.get(
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&topic={topic}&lang=en"
+    )
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
-    return jsonify(res['data'])
+    return jsonify(res)

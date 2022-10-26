@@ -7,10 +7,10 @@
         <router-link
           class="link"
           :key="$route.topics"
-          :to="{ name: 'Topics', params: { topic: 'us' } }"
+          :to="{ name: 'Topics', params: { topic: 'nation' } }"
         >
           <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
-          <div>US</div>
+          <div>Nation</div>
         </router-link>
       </div>
       <div>

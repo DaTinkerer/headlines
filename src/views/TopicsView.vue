@@ -61,12 +61,13 @@ export default {
           topic: this.topic,
         })
         .then((res) => {
-          this.articles = res.data.map((x) => ({
+          console.log(res)
+          this.articles = res.data.articles.map((x) => ({
             title: x.title,
-            source: x.source,
-            url: x.url,
-            publishedAt: dayjs(x.published_at).fromNow(),
-            image: x.image_url,
+            source: x.source.name,
+            url: x.source.url,
+            publishedAt: dayjs(x.publishedAt).fromNow(),
+            image: x.image,
           }));
         })
         .catch((err) => {
