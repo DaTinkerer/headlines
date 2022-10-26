@@ -31,8 +31,8 @@ export default {
   data() {
     return {
       articles: [],
-
       topic: "",
+      page: 1,
     };
   },
 
@@ -47,11 +47,15 @@ export default {
     this.$watch(
       () => this.$route.params,
       () => {
+        this.page = 1;
         this.getNews();
       },
       { immediate: true }
     );
     this.getNews();
+  },
+  async mounted() {
+    this.loadMoreNews();
   },
   methods: {
     async getNews() {
@@ -59,9 +63,9 @@ export default {
       axios
         .post("http://localhost:5000/articles", {
           topic: this.topic,
+          page: this.page,
         })
         .then((res) => {
-          console.log(res)
           this.articles = res.data.articles.map((x) => ({
             title: x.title,
             source: x.source.name,
@@ -76,8 +80,44 @@ export default {
           //   .then(() => {
           //     this.$router.push({ name: "Error" });
           //   });
-          console.log(err)
+          console.log(err);
         });
+    },
+    async loadMoreNews() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight ===
+          document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          if (this.page < 6) {
+            this.page = this.page + 1;
+
+            axios
+              .post("http://localhost:5000/articles", {
+                topic: this.topic,
+                page: this.page,
+              })
+              .then((res) => {
+                let newArticles = res.data.articles.map((x) => ({
+                  title: x.title,
+                  source: x.source.name,
+                  url: x.source.url,
+                  publishedAt: dayjs(x.publishedAt).fromNow(),
+                  image: x.image,
+                }));
+                this.articles.push(...newArticles);
+              })
+              .catch((err) => {
+                // this.$store
+                //   .dispatch("getError", { error: err.response.data })
+                //   .then(() => {
+                //     this.$router.push({ name: "Error" });
+                //   });
+                console.log(err);
+              });
+          }
+        }
+      };
     },
   },
 };

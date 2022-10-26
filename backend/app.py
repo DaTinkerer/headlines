@@ -43,8 +43,9 @@ def breaking():
 def get_articles():
     data = request.get_json()
     topic = data["topic"]
+    page = data["page"]
     r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&topic={topic}&lang=en"
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&topic={topic}&lang=en&page={page}"
     )
     res = r.json()
     if r.status_code == 403:
