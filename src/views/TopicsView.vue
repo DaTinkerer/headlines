@@ -69,7 +69,7 @@ export default {
           this.articles = res.data.articles.map((x) => ({
             title: x.title,
             source: x.source.name,
-            url: x.source.url,
+            url: x.url,
             publishedAt: dayjs(x.publishedAt).fromNow(),
             image: x.image,
           }));
@@ -89,7 +89,7 @@ export default {
           document.documentElement.scrollTop + window.innerHeight ===
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-          if (this.page < 6) {
+          if (this.page < 7) {
             this.page = this.page + 1;
 
             axios

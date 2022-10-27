@@ -32,7 +32,7 @@ def search():
 @app.route("/breaking")
 def breaking():
     r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en")
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&max=12")
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403
@@ -45,7 +45,7 @@ def get_articles():
     topic = data["topic"]
     page = data["page"]
     r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&topic={topic}&lang=en&page={page}"
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&topic={topic}&lang=en&max=12&page={page}"
     )
     res = r.json()
     if r.status_code == 403:

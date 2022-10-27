@@ -25,6 +25,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    // always scroll to top
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ left: 0, top: 0 });
+      }, 1500);
+    });
+  },
 });
 
 router.beforeEach((to, from, next) => {

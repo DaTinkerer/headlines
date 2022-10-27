@@ -25,7 +25,7 @@
         </div>
         <router-link
           class="link"
-          :to="{ name: 'Topics', params: { topic: 'tech' } }"
+          :to="{ name: 'Topics', params: { topic: 'technology' } }"
         >
           <div><font-awesome-icon class="icon" icon="computer" /></div>
           <div>Technology</div>
