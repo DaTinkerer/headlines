@@ -49,6 +49,7 @@ export default {
       () => {
         this.page = 1;
         this.getNews();
+        this.scrollToTop();
       },
       { immediate: true }
     );
@@ -98,14 +99,14 @@ export default {
                 page: this.page,
               })
               .then((res) => {
-                let newArticles = res.data.articles.map((x) => ({
+                let moreArticles = res.data.articles.map((x) => ({
                   title: x.title,
                   source: x.source.name,
-                  url: x.source.url,
+                  url: x.url,
                   publishedAt: dayjs(x.publishedAt).fromNow(),
                   image: x.image,
                 }));
-                this.articles.push(...newArticles);
+                this.articles.push(...moreArticles);
               })
               .catch((err) => {
                 // this.$store
@@ -118,6 +119,9 @@ export default {
           }
         }
       };
+    },
+    scrollToTop() {
+      window.scroll({ left: 0, top: 0 });
     },
   },
 };
