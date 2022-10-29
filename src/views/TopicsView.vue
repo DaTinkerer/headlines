@@ -19,110 +19,96 @@
   </div>
 </template>
 
-<script>
+<script setup>
+//imports
+import { ref, watch, onMounted } from "vue";
+import { useRoute } from "vue-router";
 import axios from "axios";
 const dayjs = require("dayjs");
 dayjs().format();
 const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
-export default {
-  name: "TopicsView",
-
-  data() {
-    return {
-      articles: [],
-      topic: "",
-      page: 1,
-    };
-  },
-
-  // async beforeRouteUpdate(to) {
-  //   if (to.params.topic == null) {
-  //     return false;
-  //   } else {
-  //     this.getNews();
-  //   }
-  // },
-  async created() {
-    this.$watch(
-      () => this.$route.params,
-      () => {
-        this.page = 1;
-        this.getNews();
-        this.scrollToTop();
-      },
-      { immediate: true }
-    );
-    this.getNews();
-  },
-  async mounted() {
-    this.loadMoreNews();
-  },
-  methods: {
-    async getNews() {
-      this.topic = this.$route.params.topic;
-      axios
-        .post("http://localhost:5000/articles", {
-          topic: this.topic,
-          page: this.page,
-        })
-        .then((res) => {
-          this.articles = res.data.articles.map((x) => ({
-            title: x.title,
-            source: x.source.name,
-            url: x.url,
-            publishedAt: dayjs(x.publishedAt).fromNow(),
-            image: x.image,
-          }));
-        })
-        .catch((err) => {
-          // this.$store
-          //   .dispatch("getError", { error: err.response.data })
-          //   .then(() => {
-          //     this.$router.push({ name: "Error" });
-          //   });
-          console.log(err);
-        });
-    },
-    async loadMoreNews() {
-      window.onscroll = () => {
-        let bottomOfWindow =
-          document.documentElement.scrollTop + window.innerHeight ===
-          document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          if (this.page < 7) {
-            this.page = this.page + 1;
-
-            axios
-              .post("http://localhost:5000/articles", {
-                topic: this.topic,
-                page: this.page,
-              })
-              .then((res) => {
-                let moreArticles = res.data.articles.map((x) => ({
-                  title: x.title,
-                  source: x.source.name,
-                  url: x.url,
-                  publishedAt: dayjs(x.publishedAt).fromNow(),
-                  image: x.image,
-                }));
-                this.articles.push(...moreArticles);
-              })
-              .catch((err) => {
-                // this.$store
-                //   .dispatch("getError", { error: err.response.data })
-                //   .then(() => {
-                //     this.$router.push({ name: "Error" });
-                //   });
-                console.log(err);
-              });
-          }
-        }
-      };
-    },
-    scrollToTop() {
-      window.scroll({ left: 0, top: 0 });
-    },
-  },
+//const router = useRouter();
+const route = useRoute();
+// refs
+const articles = ref([]);
+const topic = ref("");
+const page = ref(1);
+// created
+const getNews = () => {
+  topic.value = route.params.topic;
+  axios
+    .post("http://localhost:5000/articles", {
+      topic: topic.value,
+      page: page.value,
+    })
+    .then((res) => {
+      articles.value = res.data.articles.map((x) => ({
+        title: x.title,
+        source: x.source.name,
+        url: x.url,
+        publishedAt: dayjs(x.publishedAt).fromNow(),
+        image: x.image,
+      }));
+    })
+    .catch((err) => {
+      // this.$store
+      //   .dispatch("getError", { error: err.response.data })
+      //   .then(() => {
+      //     this.$router.push({ name: "Error" });
+      //   });
+      console.log(err);
+    });
 };
+const scrollToTop = () => {
+  window.scroll({ left: 0, top: 0 });
+};
+const loadMoreNews = () =>
+  (window.onscroll = () => {
+    let bottomOfWindow =
+      document.documentElement.scrollTop + window.innerHeight ===
+      document.documentElement.offsetHeight;
+    if (bottomOfWindow) {
+      if (page.value < 7) {
+        page.value++;
+
+        axios
+          .post("http://localhost:5000/articles", {
+            topic: topic.value,
+            page: page.value,
+          })
+          .then((res) => {
+            let moreArticles = res.data.articles.map((x) => ({
+              title: x.title,
+              source: x.source.name,
+              url: x.url,
+              publishedAt: dayjs(x.publishedAt).fromNow(),
+              image: x.image,
+            }));
+            articles.value.push(...moreArticles);
+          })
+          .catch((err) => {
+            // this.$store
+            //   .dispatch("getError", { error: err.response.data })
+            //   .then(() => {
+            //     this.$router.push({ name: "Error" });
+            //   });
+            console.log(err);
+          });
+      }
+    }
+  });
+
+watch(
+  () => route.params,
+  () => {
+    page.value = 1;
+    getNews();
+    scrollToTop();
+  },
+  { immediate: true }
+);
+onMounted(() => {
+  loadMoreNews();
+});
 </script>
