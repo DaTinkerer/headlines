@@ -15,8 +15,9 @@ api_key = config("key")
 def search():
     data = request.get_json()
     search_input = data["input"]
+    page = data["page"]
     r = requests.get(
-        f'https://gnews.io/api/v4/search?q={search_input}&token={api_key}&lang=en'
+        f'https://gnews.io/api/v4/search?q={search_input}&token={api_key}&lang=en&max=12&page={page}'
     )
     res = r.json()
     if r.status_code == 400:
