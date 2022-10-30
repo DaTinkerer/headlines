@@ -4,9 +4,14 @@
 
     <nav id="nav">
       <div>
+        <router-link class="link" :to="{ name: 'Home' }">
+          <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
+          <div>Breaking News</div>
+        </router-link>
+      </div>
+      <div>
         <router-link
           class="link"
-          :key="$route.topics"
           :to="{ name: 'Topics', params: { topic: 'nation' } }"
         >
           <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
@@ -153,7 +158,6 @@
         </router-link>
       </div>
     </nav>
-    <font-awesome-icon @click="toggleMenu()" id="burger-menu" icon="bars" />
   </div>
 </template>
 
@@ -183,6 +187,7 @@ export default {
       display: block;
       position: fixed;
       margin-top: 1rem;
+      margin-left: 2em;
 
       .link {
         display: flex;
@@ -191,10 +196,9 @@ export default {
         text-decoration: none;
         font-size: 1rem;
         font-weight: 300;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
+        margin-bottom: 2em;
         .icon {
-          margin-right: 1rem;
+          margin-right: 1em;
         }
         &:hover {
           color: $light-red;
@@ -223,10 +227,10 @@ export default {
         text-decoration: none;
         font-size: 1rem;
         font-weight: 300;
-        margin-bottom: 2rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-top: 1rem;
+        margin-bottom: 2em;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
         .icon {
           margin-right: 1rem;
         }
@@ -239,26 +243,6 @@ export default {
   }
   #mobile-nav.active {
     left: 0;
-  }
-  #burger-menu {
-    color: $light-red;
-    cursor: pointer;
-    font-size: 1.3rem;
-    margin-left: 0.8rem;
-    margin-bottom: 2em;
-    margin-top: 3.8rem;
-    margin-right: 1rem;
-    position: fixed;
-    top: 0;
-    z-index: 3;
-    -webkit-tap-highlight-color: transparent;
-    &:hover {
-      color: $dark-red;
-      transition: 0.1s;
-    }
-    @media screen and (min-width: 1185px) {
-      display: none;
-    }
   }
 }
 </style>
