@@ -191,8 +191,8 @@ export default {
 
       .link {
         display: flex;
-        align-items: center;
         color: $gray;
+        gap: 2px;
         text-decoration: none;
         font-size: 1rem;
         font-weight: 300;
@@ -201,7 +201,7 @@ export default {
           margin-right: 1em;
         }
         &:hover {
-          color: $light-red;
+          color: $light-yellow;
           transition: 0.15s;
         }
       }
@@ -235,7 +235,7 @@ export default {
           margin-right: 1rem;
         }
         &:hover {
-          color: $light-red;
+          color: $light-yellow;
           transition: 0.15s;
         }
       }

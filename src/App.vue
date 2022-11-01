@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss">
 body {
-  background-color: #282a36;
+  background-color: $charcoal;
   margin: 0;
   padding: 0;
   width: 100%;
