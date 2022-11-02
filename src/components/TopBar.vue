@@ -1,8 +1,8 @@
 <template>
   <header class="header">
     <div class="logo-cont">
-      <router-link class="logo" to="/"><h2>The Headlines</h2></router-link>
-      <router-link class="mobile-logo" to="/"><h2>Headlines</h2></router-link>
+      <span class="menu"><font-awesome-icon class="bars icon" icon="bars" /></span>
+      <router-link class="logo" to="/"><h2>Headlines</h2></router-link>
     </div>
     <div class="form-cont">
       <form @submit.prevent="sendInput()">
@@ -69,41 +69,32 @@ export default {
   left: 0;
   right: 0;
   height: 70px;
-  z-index: 2;
+  z-index: 100;
   width: 100%;
   @media screen and (min-width: 422px) {
     justify-content: flex-start;
   }
   .logo-cont {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-left: 1em;
     @media screen and (min-width: 1185px) {
       margin-left: 2em;
     }
   }
   .logo {
-    display: none;
-    @media screen and (min-width: 461px) {
       display: inline-block;
       color: $light-yellow;
       text-decoration: none;
       font-family: $logo-font;
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-    }
   }
-  .mobile-logo {
-    display: inline-block;
-    color: $light-yellow;
-    text-decoration: none;
-    font-size: 0.8em;
-    font-family: $logo-font;
-    text-transform: uppercase;
-    @media screen and (min-width: 461px) {
-      display: none;
-    }
-  }
-  // .form-cont {
-  // }
+   .form-cont {
+     
+     margin-right: -1em;
+   }
   .desktop-input {
     display: none;
     @media screen and (min-width: 422px) {
@@ -129,6 +120,16 @@ export default {
     @media screen and (min-width: 422px) {
       display: none;
     }
+  }
+  .menu {
+    display: inline;
+    cursor: pointer;
+    @media screen and (min-width: 1185px) {
+      display: none;
+    }
+  }
+  .bars {
+    color: $light-yellow;
   }
 }
 </style>
