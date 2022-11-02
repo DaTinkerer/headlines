@@ -5,7 +5,7 @@
         <div>
           <p id="article-title">{{ article.title }}</p>
           <p id="article-source">
-            {{ article.source }} . {{ article.publishedAt }}
+            {{ article.source.name }} . {{ article.publishedAt }}
           </p>
           <a id="article-link" :href="article.url" target="_blank"
             ><p>Full Article</p></a
@@ -45,7 +45,7 @@ const getNews = () => {
     .then((res) => {
       articles.value = res.data.articles.map((x) => ({
         title: x.title,
-        source: x.source.name,
+        source: x.source,
         url: x.url,
         publishedAt: dayjs(x.publishedAt).fromNow(),
         image: x.image,
@@ -80,7 +80,7 @@ const loadMoreNews = () =>
           .then((res) => {
             let moreArticles = res.data.articles.map((x) => ({
               title: x.title,
-              source: x.source.name,
+              source: x.source,
               url: x.url,
               publishedAt: dayjs(x.publishedAt).fromNow(),
               image: x.image,

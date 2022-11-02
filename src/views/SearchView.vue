@@ -84,7 +84,7 @@ const loadMoreNews = () =>
           .then((res) => {
             let moreArticles = res.data.articles.map((x) => ({
               title: x.title,
-              source: x.source.name,
+              source: x.source,
               url: x.url,
               publishedAt: dayjs(x.publishedAt).fromNow(),
               image: x.image,

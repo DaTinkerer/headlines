@@ -3,10 +3,104 @@
     <!-- nav for desktop -->
 
     <nav id="nav">
+      <ul>
+        <li>
+          <router-link class="link" :to="{ name: 'Home' }">
+            <font-awesome-icon class="icon" icon="newspaper" /><span
+              class="nav-item"
+              >Breaking News</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'nation' } }"
+          >
+            <font-awesome-icon class="icon" icon="flag-usa" /><span
+              class="nav-item"
+              >Nation</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'world' } }"
+          >
+            <font-awesome-icon class="icon" icon="earth-americas" /><span
+              class="nav-item"
+              >World</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'technology' } }"
+          >
+            <font-awesome-icon class="icon" icon="computer" /><span
+              class="nav-item"
+              >Technology</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'sports' } }"
+          >
+            <font-awesome-icon class="icon" icon="football" /><span
+              class="nav-item"
+              >Sports</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'business' } }"
+          >
+            <font-awesome-icon class="icon" icon="building" /><span
+              class="nav-item"
+              >Business</span
+            >
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'entertainment' } }"
+          >
+            <font-awesome-icon class="icon" icon="film" />
+            <span class="nav-item">Entertainment</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'health' } }"
+          >
+            <font-awesome-icon class="icon" icon="heart-pulse" />
+            <span class="nav-item">Health</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="link"
+            :to="{ name: 'Topics', params: { topic: 'science' } }"
+          >
+            <font-awesome-icon class="icon" icon="flask" />
+            <span class="nav-item">Science</span>
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+    <!-- <nav id="nav">
       <div>
         <router-link class="link" :to="{ name: 'Home' }">
-          <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
-          <div>Breaking News</div>
+          <div><font-awesome-icon class="icon" icon="newspaper" /></div>
+          <div class="topic"><span>Breaking News</span></div>
         </router-link>
       </div>
       <div>
@@ -15,34 +109,32 @@
           :to="{ name: 'Topics', params: { topic: 'nation' } }"
         >
           <div><font-awesome-icon class="icon" icon="flag-usa" /></div>
-          <div>Nation</div>
+          <div class="topic"><span>Nation</span></div>
         </router-link>
       </div>
       <div>
-        <div>
-          <router-link
-            class="link"
-            :to="{ name: 'Topics', params: { topic: 'world' } }"
-          >
-            <div><font-awesome-icon class="icon" icon="globe" /></div>
-            <div>World</div>
-          </router-link>
-        </div>
         <router-link
           class="link"
-          :to="{ name: 'Topics', params: { topic: 'technology' } }"
+          :to="{ name: 'Topics', params: { topic: 'world' } }"
         >
-          <div><font-awesome-icon class="icon" icon="computer" /></div>
-          <div>Technology</div>
+          <div><font-awesome-icon class="icon" icon="earth-americas" /></div>
+          <div class="topic"><span>World</span></div>
         </router-link>
       </div>
+      <router-link
+        class="link"
+        :to="{ name: 'Topics', params: { topic: 'technology' } }"
+      >
+        <div><font-awesome-icon class="icon" icon="computer" /></div>
+        <div class="topic"><span>Technology</span></div>
+      </router-link>
       <div>
         <router-link
           class="link"
           :to="{ name: 'Topics', params: { topic: 'sports' } }"
         >
           <div><font-awesome-icon class="icon" icon="football" /></div>
-          <div>Sports</div>
+          <div class="topic"><span>Sports</span></div>
         </router-link>
       </div>
       <div>
@@ -51,7 +143,7 @@
           :to="{ name: 'Topics', params: { topic: 'business' } }"
         >
           <div><font-awesome-icon class="icon" icon="building" /></div>
-          <div>Business</div>
+          <div class="topic"><span>Business</span></div>
         </router-link>
       </div>
       <div>
@@ -60,7 +152,7 @@
           :to="{ name: 'Topics', params: { topic: 'entertainment' } }"
         >
           <div><font-awesome-icon class="icon" icon="film" /></div>
-          <div>Entertainment</div>
+          <div class="topic"><span>Entertainment</span></div>
         </router-link>
       </div>
       <div>
@@ -69,7 +161,7 @@
           :to="{ name: 'Topics', params: { topic: 'health' } }"
         >
           <div><font-awesome-icon class="icon" icon="heart-pulse" /></div>
-          <div>Health</div>
+          <div class="topic"><span>Health</span></div>
         </router-link>
       </div>
       <div>
@@ -78,10 +170,10 @@
           :to="{ name: 'Topics', params: { topic: 'science' } }"
         >
           <div><font-awesome-icon class="icon" icon="flask" /></div>
-          <div>Science</div>
+          <div class="topic"><span>Science</span></div>
         </router-link>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- nav for mobile -->
     <nav @click="toggleMenu()" id="mobile-nav">
@@ -188,9 +280,15 @@ export default {
       position: fixed;
       margin-top: 1rem;
       margin-left: 2em;
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
 
       .link {
-        display: flex;
+        display: table;
+        position: relative;
         color: $gray;
         gap: 2px;
         text-decoration: none;
@@ -204,6 +302,10 @@ export default {
           color: $light-yellow;
           transition: 0.15s;
         }
+      }
+      .icon {
+        position: relative;
+        width: 20px;
       }
     }
   }

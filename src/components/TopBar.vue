@@ -87,15 +87,17 @@ export default {
       color: $light-yellow;
       text-decoration: none;
       font-family: $logo-font;
-      font-size: .9rem;;
+      font-size: 0.9rem;
+      text-transform: uppercase;
     }
   }
   .mobile-logo {
     display: inline-block;
     color: $light-yellow;
     text-decoration: none;
-    font-size: .8em;
+    font-size: 0.8em;
     font-family: $logo-font;
+    text-transform: uppercase;
     @media screen and (min-width: 461px) {
       display: none;
     }
