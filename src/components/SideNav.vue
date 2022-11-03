@@ -3,7 +3,7 @@
     <!-- nav for desktop -->
 
     <nav id="nav">
-      <ul>
+      <ul @click="close">
         <li>
           <router-link class="link" :to="{ name: 'Home' }">
             <font-awesome-icon class="icon" icon="newspaper" /><span
@@ -100,15 +100,30 @@
 </template>
 
 <script>
+import { watch } from "vue";
 export default {
   data() {
     return {};
   },
-
-  created() {},
+  created() {
+    watch(
+      () => this.$store.state.value,
+      () => {
+        this.toggleMenu();
+      }
+    );
+  },
   methods: {
     toggleMenu() {
-      document.querySelector("#mobile-nav").classList.toggle("active");
+      const nav = document.querySelector("#nav");
+      if (this.$store.state.value == true) {
+        nav.classList.add("active");
+      } else {
+        nav.classList.remove("active");
+      }
+    },
+    close() {
+      this.$store.dispatch("toggleMenu");
     },
   },
 };
@@ -126,13 +141,18 @@ export default {
     min-width: 280px;
     top: 0;
     transform: translateX(-100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     z-index: 50;
     ul {
       margin: 0;
       padding: 0;
-      margin-top: 7.5rem;
+      margin-top: 8rem;
       list-style-type: none;
+      width: 100%;
+    }
+    li {
+      overflow: hidden;
+      position: relative;
     }
     .link {
       display: table;
@@ -141,10 +161,12 @@ export default {
       text-decoration: none;
       font-size: 1rem;
       font-weight: 300;
-      margin-bottom: 2em;
-      margin-left: 1em;
-      margin-right: 1em;
-      margin-top: 1em;
+      margin-top: 1emw;
+      width: 100%;
+      padding-top: 1em;
+      padding-left: 2em;
+      padding-bottom: 1em;
+      overflow-x: hidden;
       .icon {
         margin-right: 1rem;
         position: relative;
@@ -157,14 +179,19 @@ export default {
     }
     @media screen and (min-width: 1185px) {
       display: block;
-      margin-left: 1em;
       background: none;
       transform: translateX(0);
       z-index: 0;
     }
   }
-}
-#mobile-nav.active {
-  left: 0;
+  .router-link-active {
+    background: #5f581c;
+    .nav-item, .icon{
+      color: $light-yellow;
+    }
+  }
+  #nav.active {
+    transform: translateX(0);
+  }
 }
 </style>

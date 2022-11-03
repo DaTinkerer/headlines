@@ -1,17 +1,21 @@
 import { createStore } from "vuex";
 export default createStore({
   state: {
-    msg: "",
+    value: false,
   },
   getters: {},
   mutations: {
-    setErrorMsg(state, msg) {
-      state.msg = msg;
+    setValue(state) {
+      if (state.value != true) {
+        state.value = true;
+      } else {
+        state.value = false;
+      }
     },
   },
   actions: {
-    async getError({ commit }, error) {
-      commit("setErrorMsg", error);
+    async toggleMenu({ commit }) {
+      commit("setValue");
     },
   },
   modules: {},

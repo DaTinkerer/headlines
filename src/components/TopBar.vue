@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="logo-cont">
-      <span class="menu"><font-awesome-icon class="bars icon" icon="bars" /></span>
+      <span class="menu" @click="dispatch"
+        ><font-awesome-icon class="bars icon" icon="bars"
+      /></span>
       <router-link class="logo" to="/"><h2>Headlines</h2></router-link>
     </div>
     <div class="form-cont">
@@ -10,7 +12,7 @@
         <input
           v-model="input"
           type="text"
-          placeholder="Search for Stories"
+          placeholder="Search for stories"
           autocomplete="off"
           class="desktop-input"
         />
@@ -42,6 +44,9 @@ export default {
       } else {
         this.isShown = false;
       }
+    },
+    dispatch() {
+      this.$store.dispatch("toggleMenu");
     },
   },
   watch: {
@@ -84,17 +89,17 @@ export default {
     }
   }
   .logo {
-      display: inline-block;
-      color: $light-yellow;
-      text-decoration: none;
-      font-family: $logo-font;
-      font-size: 0.7rem;
-      text-transform: uppercase;
+    display: inline-block;
+    color: $light-yellow;
+    text-decoration: none;
+    font-family: $logo-font;
+    font-size: 0.7rem;
+    text-transform: uppercase;
   }
-   .form-cont {
-     
-     margin-right: -1em;
-   }
+  .form-cont {
+    width: 40%;
+    max-width: 430px;
+  }
   .desktop-input {
     display: none;
     @media screen and (min-width: 422px) {
@@ -105,9 +110,10 @@ export default {
       color: #fff;
       font-size: 0.9rem;
       padding: 0.8rem;
+      width: 100%;
       &:focus {
         outline: none;
-        background-color: $darker-blue;
+        background-color: rgb(43, 43, 43);
         transition: 0.2s;
       }
     }
