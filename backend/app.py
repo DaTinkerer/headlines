@@ -30,10 +30,12 @@ def search():
     return jsonify(res)
 
 
-@app.route("/breaking")
+@app.route("/breaking", methods=["POST"])
 def breaking():
+    data = request.get_json()
+    page = data["page"]
     r = requests.get(
-        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&max=12")
+        f"https://gnews.io/api/v4/top-headlines?token={api_key}&lang=en&max=12&page={page}")
     res = r.json()
     if r.status_code == 403:
         return "Maximum daily request limit reached.", 403

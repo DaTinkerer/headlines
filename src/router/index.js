@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import TopicsView from "../views/TopicsView.vue";
 import HomeView from "../views/HomeView.vue";
 import SearchView from "../views/SearchView.vue";
-
 const routes = [
   {
     path: "/",
@@ -25,18 +24,22 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-//  scrollBehavior() {
-    // always scroll to top
-//    return new Promise((resolve) => {
-//      setTimeout(() => {
-//        resolve({ left: 0, top: 0 });
-//      }, 1000);
-//    });
-//  },
+  //  scrollBehavior() {
+  // always scroll to top
+  //    return new Promise((resolve) => {
+  //      setTimeout(() => {
+  //        resolve({ left: 0, top: 0 });
+  //      }, 1000);
+  //    });
+  //  },
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${process.env.VUE_APP_TITLE} | ${to.name}`;
+  if (to.name == "Home") {
+    document.title = `${process.env.VUE_APP_TITLE} | breaking news`;
+  } else {
+    document.title = `${process.env.VUE_APP_TITLE} | ${to.params.topic}`;
+  }
   next();
 });
 

@@ -35,9 +35,9 @@ const articles = ref([]);
 const topic = ref("");
 const page = ref(1);
 // created
-const getNews = () => {
+const getNews = async () => {
   topic.value = route.params.topic;
-  axios
+  await axios
     .post("http://localhost:5000/articles", {
       topic: topic.value,
       page: page.value,

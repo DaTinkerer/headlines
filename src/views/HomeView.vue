@@ -21,7 +21,8 @@
 
 <script setup>
 //imports
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
 import axios from "axios";
 const dayjs = require("dayjs");
 dayjs().format();
@@ -29,10 +30,14 @@ const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
 //refs
 const articles = ref([]);
+const page = ref(1);
+const route = useRoute();
 // created
 const getNews = () => {
   axios
-    .get("http://localhost:5000/breaking")
+    .post("http://localhost:5000/breaking", {
+      page: page.value,
+    })
     .then((res) => {
       articles.value = res.data.articles.map((x) => ({
         title: x.title,
@@ -51,5 +56,54 @@ const getNews = () => {
       console.log(err);
     });
 };
+const loadMoreNews = () =>
+  (window.onscroll = () => {
+    let bottomOfWindow =
+      document.documentElement.scrollTop + window.innerHeight ===
+      document.documentElement.offsetHeight;
+    if (bottomOfWindow) {
+      if (page.value < 7) {
+        page.value++;
+
+        axios
+          .post("http://localhost:5000/breaking", {
+            page: page.value,
+          })
+          .then((res) => {
+            let moreArticles = res.data.articles.map((x) => ({
+              title: x.title,
+              source: x.source,
+              url: x.url,
+              publishedAt: dayjs(x.publishedAt).fromNow(),
+              image: x.image,
+            }));
+            articles.value.push(...moreArticles);
+          })
+          .catch((err) => {
+            // this.$store
+            //   .dispatch("getError", { error: err.response.data })
+            //   .then(() => {
+            //     this.$router.push({ name: "Error" });
+            //   });
+            console.log(err);
+          });
+      }
+    }
+  });
+const scrollToTop = () => {
+  window.scroll({ left: 0, top: 0 });
+};
+watch(
+  () => route.params,
+  () => {
+    page.value = 1;
+    getNews();
+    scrollToTop();
+  },
+  { immediate: true }
+);
 getNews();
+onMounted(() => {
+  loadMoreNews();
+});
 </script>

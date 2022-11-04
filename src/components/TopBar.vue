@@ -4,7 +4,9 @@
       <span class="menu" @click="dispatch"
         ><font-awesome-icon class="bars icon" icon="bars"
       /></span>
-      <router-link class="logo" to="/"><h2>Headlines</h2></router-link>
+      <router-link class="logo" :to="{ name: 'Home' }"
+        ><h2>Headlines</h2></router-link
+      >
     </div>
     <div class="form-cont">
       <form @submit.prevent="sendInput()">
@@ -17,8 +19,18 @@
           class="desktop-input"
         />
       </form>
+      <button class="button">
+        <font-awesome-icon class="more-icon icon" icon="angle-right" />
+      </button>
     </div>
     <font-awesome-icon class="search-icon icon" icon="magnifying-glass" />
+    <Transition name="fade">
+      <div class="modal-overlay">
+        <div class="advanced-search"><form action="" class="form">
+          <input type="text">
+          </form></div>
+      </div>
+    </Transition>
   </header>
 </template>
 
@@ -84,28 +96,41 @@ export default {
     align-items: center;
     gap: 1rem;
     margin-left: 1em;
-    @media screen and (min-width: 1185px) {
+    @media screen and (min-width: 1348px) {
       margin-left: 2em;
     }
   }
   .logo {
     display: inline-block;
-    color: $light-yellow;
     text-decoration: none;
-    font-family: $logo-font;
+    color: #fff;
     font-size: 0.7rem;
     text-transform: uppercase;
   }
   .form-cont {
     width: 40%;
     max-width: 430px;
+    gap: 1em;
+    display: flex;
+  }
+  .button {
+    padding: 1em;
+    width: 60px;
+    border: none;
+    background: rgb(56, 56, 56);
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    cursor: pointer;
+    .more-icon {
+      color: $gray;
+    }
   }
   .desktop-input {
     display: none;
     @media screen and (min-width: 422px) {
       display: block;
-      background-color: rgb(56, 56, 56);
-      border-radius: 0.5rem;
+      background: rgb(56, 56, 56);
+      border-radius: 0.3rem;
       border: none;
       color: #fff;
       font-size: 0.9rem;
@@ -130,12 +155,23 @@ export default {
   .menu {
     display: inline;
     cursor: pointer;
-    @media screen and (min-width: 1185px) {
+    @media screen and (min-width: 1348px) {
       display: none;
     }
   }
   .bars {
-    color: $light-yellow;
+    color: #fff;
   }
+  .modal-overlay {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 }
 </style>

@@ -152,7 +152,6 @@ export default {
     }
     li {
       overflow: hidden;
-      position: relative;
     }
     .link {
       display: table;
@@ -173,11 +172,11 @@ export default {
         width: 20px;
       }
       &:hover {
-        color: $light-yellow;
+        color: $green;
         transition: 0.15s;
       }
     }
-    @media screen and (min-width: 1185px) {
+    @media screen and (min-width: 1348px) {
       display: block;
       background: none;
       transform: translateX(0);
@@ -185,9 +184,11 @@ export default {
     }
   }
   .router-link-active {
-    background: #5f581c;
-    .nav-item, .icon{
-      color: $light-yellow;
+    background: #164424;
+    .nav-item,
+    .icon {
+      color: $green;
+      font-weight: 400;
     }
   }
   #nav.active {

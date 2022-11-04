@@ -27,5 +27,4 @@ body {
   width: 100%;
   font-family: $font;
 }
-
 </style>
