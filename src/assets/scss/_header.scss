@@ -1,0 +1,201 @@
+::placeholder {
+  color: $gray;
+  font-family: $font;
+  font-size: 0.9rem;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5em;
+  background-color: $charcoal;
+  gap: 4em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  z-index: 100;
+  width: 100%;
+  @media screen and (min-width: 422px) {
+    justify-content: flex-start;
+  }
+  .logo-cont {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1em;
+    @media screen and (min-width: 1348px) {
+      margin-left: 2em;
+    }
+  }
+  .logo {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  .form-cont {
+    display: none;
+
+    @media screen and (min-width: 422px) {
+      width: 50%;
+      max-width: 430px;
+      gap: 1em;
+
+      display: flex;
+    }
+  }
+  .mobile-form-cont {
+    display: none;
+    @media screen and (min-width: 422px) {
+      display: none;
+    }
+  }
+  .mobile-form-cont .input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .mobile-form-cont.active {
+    width: 50%;
+    max-width: 300px;
+    gap: 1em;
+    display: flex;
+    z-index: 200;
+    position: absolute;
+    right: 0.8rem;
+
+    @media screen and (min-width: 422px) {
+      display: none;
+    }
+  }
+
+  .button {
+    padding: 1em;
+    width: 60px;
+    border: none;
+    background: rgb(56, 56, 56);
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    cursor: pointer;
+  }
+  .more-icon {
+    color: $gray;
+  }
+  .button.exit {
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3em;
+    margin-right: -1.25em;
+    &:hover {
+      background-color: rgb(43, 43, 43);
+      transition: 0.2s;
+    }
+  }
+  .x-icon {
+    color: $gray;
+  }
+  .input {
+    display: block;
+    background: rgb(56, 56, 56);
+    border-radius: 0.3rem;
+    border: none;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    width: 100%;
+    &:focus {
+      outline: none;
+      background-color: rgb(43, 43, 43);
+      transition: 0.2s;
+    }
+  }
+  .search-icon {
+    display: block;
+    padding-right: 1em;
+    color: $gray;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(122, 122, 122);
+      transition: 0.2s;
+    }
+    @media screen and (min-width: 422px) {
+      display: none;
+    }
+  }
+  .menu {
+    display: inline;
+    cursor: pointer;
+    @media screen and (min-width: 1348px) {
+      display: none;
+    }
+  }
+  .bars {
+    color: #fff;
+  }
+  .dropdown {
+    display: none;
+    background: rgb(56, 56, 56);
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      top: 61px;
+      left: 12.5rem;
+      right: auto;
+      bottom: auto;
+      border-radius: 0.3rem;
+      min-width: 301px;
+    }
+    @media screen and (min-width: 1348px) {
+      left: 11.7rem;
+    }
+  }
+
+  .dropdown.show {
+    display: block;
+  }
+  .dropdown .x-icon {
+    color: $green;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 30px;
+    margin-left: 1em;
+    @media screen and (min-width: 600px) {
+      display: none;
+    }
+  }
+  .input-cont {
+    margin-left: 1rem;
+    margin-top: 3rem;
+    @media screen and (min-width: 600px) {
+      margin-top: 2rem;
+    }
+  }
+  .input.dd-input {
+    width: 50%;
+    margin-top: 1em;
+    background: rgb(41, 41, 41);
+    border-bottom-left-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    width: 82%;
+    &:focus {
+      outline-style: solid;
+      outline-width: 1px;
+      outline-color: $green;
+    }
+  }
+  .advanced-search-form {
+    margin-bottom: 2rem;
+  }
+  .label {
+    color: $gray;
+  }
+}

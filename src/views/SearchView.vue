@@ -1,6 +1,7 @@
 <template>
   <div class="view">
     <section class="articles-cont">
+      <p v-if="error" class="error">{{ msg }}</p>
       <div class="article" v-for="article in articles" :key="article.id">
         <div>
           <p class="article-content" id="article-title">{{ article.title }}</p>
@@ -37,9 +38,12 @@ dayjs.extend(relativeTime);
 const query = ref("");
 const articles = ref([]);
 const page = ref(1);
+const error = ref(false);
+const msg = ref("");
 
 // created
 const getNews = () => {
+  error.value = false;
   query.value = route.query.q;
   axios
     .post("http://localhost:5000/search", {
@@ -56,12 +60,9 @@ const getNews = () => {
       }));
     })
     .catch((err) => {
-      // this.$store
-      //   .dispatch("getError", { error: err.response.data })
-      //   .then(() => {
-      //     this.$router.push({ name: "Error" });
-      //   });
-      console.log(err);
+      error.value = true;
+      msg.value = err.response.data;
+      articles.value = "";
     });
 };
 const scrollToTop = () => {
@@ -92,11 +93,6 @@ const loadMoreNews = () =>
             articles.value.push(...moreArticles);
           })
           .catch((err) => {
-            // this.$store
-            //   .dispatch("getError", { error: err.response.data })
-            //   .then(() => {
-            //     this.$router.push({ name: "Error" });
-            //   });
             console.log(err);
           });
       }

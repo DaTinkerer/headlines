@@ -1,19 +1,19 @@
 <template>
   <div class="app">
-    <TopBar />
+    <Header />
     <SideNav />
     <router-view />
   </div>
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
+import Header from "@/components/Header.vue";
 import SideNav from "@/components/SideNav.vue";
 
 export default {
   name: "App",
   components: {
-    TopBar,
+    Header,
     SideNav,
   },
 };

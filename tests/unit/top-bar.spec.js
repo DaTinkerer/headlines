@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import TopBar from "@/components/TopBar.vue";
+import TopBar from "@/components/Header.vue";
 import { createStore } from "vuex";
 const actions = {
     SearchNews: jest.fn()
