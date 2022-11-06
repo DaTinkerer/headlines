@@ -94,6 +94,12 @@
       transition: 0.2s;
     }
   }
+  .button.useless {
+    cursor: auto;
+  }
+  .glass {
+    color: $gray;
+  }
   .x-icon {
     color: $gray;
   }
@@ -111,6 +117,9 @@
       background-color: rgb(43, 43, 43);
       transition: 0.2s;
     }
+  }
+  .form-cont .input.required {
+    background: rgb(206, 112, 112);
   }
   .search-icon {
     display: block;
@@ -135,67 +144,5 @@
   }
   .bars {
     color: #fff;
-  }
-  .dropdown {
-    display: none;
-    background: rgb(56, 56, 56);
-    position: fixed;
-    z-index: 500;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    @media screen and (min-width: 600px) {
-      position: absolute;
-      top: 61px;
-      left: 12.5rem;
-      right: auto;
-      bottom: auto;
-      border-radius: 0.3rem;
-      min-width: 301px;
-    }
-    @media screen and (min-width: 1348px) {
-      left: 11.7rem;
-    }
-  }
-
-  .dropdown.show {
-    display: block;
-  }
-  .dropdown .x-icon {
-    color: $green;
-    cursor: pointer;
-    margin-top: 2rem;
-    width: 30px;
-    margin-left: 1em;
-    @media screen and (min-width: 600px) {
-      display: none;
-    }
-  }
-  .input-cont {
-    margin-left: 1rem;
-    margin-top: 3rem;
-    @media screen and (min-width: 600px) {
-      margin-top: 2rem;
-    }
-  }
-  .input.dd-input {
-    width: 50%;
-    margin-top: 1em;
-    background: rgb(41, 41, 41);
-    border-bottom-left-radius: 0.3rem;
-    border-top-left-radius: 0.3rem;
-    width: 82%;
-    &:focus {
-      outline-style: solid;
-      outline-width: 1px;
-      outline-color: $green;
-    }
-  }
-  .advanced-search-form {
-    margin-bottom: 2rem;
-  }
-  .label {
-    color: $gray;
   }
 }

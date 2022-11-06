@@ -1,19 +1,19 @@
 <template>
   <div class="app">
-    <Header />
-    <SideNav />
+    <header-component />
+    <side-nav />
     <router-view />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
 import SideNav from "@/components/SideNav.vue";
 
 export default {
   name: "App",
   components: {
-    Header,
+    HeaderComponent,
     SideNav,
   },
 };

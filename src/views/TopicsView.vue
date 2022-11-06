@@ -52,11 +52,6 @@ const getNews = async () => {
       }));
     })
     .catch((err) => {
-      // this.$store
-      //   .dispatch("getError", { error: err.response.data })
-      //   .then(() => {
-      //     this.$router.push({ name: "Error" });
-      //   });
       console.log(err);
     });
 };
