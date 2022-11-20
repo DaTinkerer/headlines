@@ -37,6 +37,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.name == "Home") {
     document.title = `${process.env.VUE_APP_TITLE} | breaking news`;
+  } else if (to.name == "Search") {
+    document.title = `${process.env.VUE_APP_TITLE} | search results`;
   } else {
     document.title = `${process.env.VUE_APP_TITLE} | ${to.params.topic}`;
   }

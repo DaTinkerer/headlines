@@ -35,7 +35,7 @@ const route = useRoute();
 // created
 const getNews = () => {
   axios
-    .post("http://localhost:5000/breaking", {
+    .post("https://api.headlines.icu/breaking", {
       page: page.value,
     })
     .then((res) => {
@@ -66,7 +66,7 @@ const loadMoreNews = () =>
         page.value++;
 
         axios
-          .post("http://localhost:5000/breaking", {
+          .post("https://api.headlines.icu/breaking", {
             page: page.value,
           })
           .then((res) => {

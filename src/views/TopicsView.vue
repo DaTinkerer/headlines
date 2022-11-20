@@ -34,11 +34,11 @@ const route = useRoute();
 const articles = ref([]);
 const topic = ref("");
 const page = ref(1);
-// created
+// methods
 const getNews = async () => {
   topic.value = route.params.topic;
   await axios
-    .post("http://localhost:5000/articles", {
+    .post("https://api.headlines.icu/articles", {
       topic: topic.value,
       page: page.value,
     })
@@ -68,7 +68,7 @@ const loadMoreNews = () =>
         page.value++;
 
         axios
-          .post("http://localhost:5000/articles", {
+          .post("https://api.headlines.icu/articles", {
             topic: topic.value,
             page: page.value,
           })

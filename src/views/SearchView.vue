@@ -46,7 +46,7 @@ const getNews = () => {
   error.value = false;
   query.value = route.query.q;
   axios
-    .post("http://localhost:5000/search", {
+    .post("https://api.headlines.icu/search", {
       input: query.value,
       page: page.value,
     })
@@ -78,7 +78,7 @@ const loadMoreNews = () =>
         page.value++;
 
         axios
-          .post("http://localhost:5000/search", {
+          .post("https://api.headlines.icu/search", {
             input: query.value,
             page: page.value,
           })
